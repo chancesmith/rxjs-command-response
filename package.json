@@ -1,0 +1,24 @@
+{
+  "name": "rxjs-command-response",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && nodemon dist/server.js",
+    "client": "nodemon dist/client.js",
+    "server": "nodemon dist/server.js",
+    "dev-client": "tsc && nodemon --watch src -e ts --exec \"node dist/client.js\"",
+    "dev-server": "tsc && nodemon --watch src -e ts --exec \"node dist/server.js\""
+  },
+  "devDependencies": {
+    "@types/express": "4.17.1",
+    "@types/ws": "^8.5.10",
+    "nodemon": "^3.1.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "rxjs": "^7.8.1",
+    "ws": "^8.17.0"
+  }
+}
