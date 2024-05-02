@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "npm run build && nodemon dist/server.js",
+    "client2": "nodemon dist/client-wo-websocket.js",
     "client": "nodemon dist/client.js",
     "server": "nodemon dist/server.js",
     "dev-client": "tsc && nodemon --watch src -e ts --exec \"node dist/client.js\"",

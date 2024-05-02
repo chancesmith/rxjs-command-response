@@ -7,6 +7,8 @@ const DELAY_MS = 1000;
 const wss = new WebSocket.Server({ port: PORT });
 
 wss.on("connection", (ws: WebSocket) => {
+  console.log("WebSocket connected");
+
   ws.on("message", (message: string) => {
     const { requestId, command }: CommandMessage = JSON.parse(message);
 
@@ -23,6 +25,21 @@ wss.on("connection", (ws: WebSocket) => {
         ws.send(JSON.stringify(response));
       }
     }, DELAY_MS);
+  });
+
+  // 3. send a message to the client every 5 seconds
+  const interval = setInterval(() => {
+    const message: ResponseMessage = {
+      requestId: "interval",
+      result: "Interval message",
+    };
+    console.log({ message });
+    ws.send(JSON.stringify(message));
+  }, 5000);
+
+  ws.on("close", () => {
+    clearInterval(interval);
+    console.log("WebSocket closed");
   });
 });
 
